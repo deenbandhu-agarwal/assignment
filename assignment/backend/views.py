@@ -16,7 +16,7 @@ def index(request):
 
 def sign_up(request):
 	if request.method == 'GET':
-		return render(request, 'SignUp.html', context=None)# Create your views here.
+		return render(request, 'Signup.html', context=None)# Create your views here.
 	else:
 		print(request.body)
 		data = json.loads(request.body)
