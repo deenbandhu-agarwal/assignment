@@ -45,6 +45,10 @@ def login(request):
 			result["message"] = "Logged in"
 		return JsonResponse(result)
 
+
+def sign_out(request):
+	request.session.flush()
+	return render(request, 'login.html', context=None)
 # def login1(request):
 	# result = login(id,password)
 	# if result["status"]:
