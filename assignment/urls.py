@@ -15,7 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from assignment.backend import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', views.index, name='index'),
+    path('signup', views.sign_up),
+    path('login', views.login),
+    path('index', views.index, name='index'),
+
+
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+urlpatterns = format_suffix_patterns(urlpatterns)
+
+
+# handler403 = 'assignment.backend.views.login'
